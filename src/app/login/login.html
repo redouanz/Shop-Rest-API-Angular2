@@ -1,0 +1,54 @@
+<body class="login">
+    <div class="form-signin">
+       <div class="text-center">
+          <img src="assets/img/hid.jpeg" alt="hiddenfounders Logo">
+       </div>
+       <hr>
+       <div class="tab-content">
+          <div id="login" class="tab-pane active">
+             <form (ngSubmit)="login()" [formGroup]="form">
+             <p class="text-muted text-center">
+                Enter your username and password
+             </p>
+             <input id="login-username-textbox" type="text"  placeholder="email@email.com" [formControl]="username" required class="form-control top">
+             <p class="text-muted text-center">
+             </p>
+             <input id="login-password-textbox" type="password" class="form-control" placeholder="Password" [formControl]="password" requiredclass="form-control bottom">
+             <div *ngIf="errorMessage">
+                <span class="help-block error">{{errorMessage}}</span>
+             </div>
+             <div *ngIf="successMessage">
+                <span class="help-block success">{{successMessage}}</span>
+             </div>
+             <div class="checkbox">
+             </div>
+             <button id="login-submit" type="submit" class="go-btn btn btn-lg btn-primary btn-block">Login</button>
+             </form>
+          </div>
+       </div>
+       <hr>
+       <div class="text-center">
+          <ul class="list-inline">
+             <li><a [routerLink]="['../login']"  class="text-muted" href="#login" data-toggle="tab">Login</a></li>
+             <li><a [routerLink]="['../register']" class="text-muted" href="#signup" data-toggle="tab">Signup</a></li>
+          </ul>
+       </div>
+    </div>
+    <!--jQuery -->
+   
+    <script type="text/javascript">
+       (function($) {
+           $(document).ready(function() {
+               $('.list-inline li > a').click(function() {
+                   var activeForm = $(this).attr('href') + ' > form';
+                   //console.log(activeForm);
+                   $(activeForm).addClass('animated fadeIn');
+                   //set timer to 1 seconds, after that, unload the animate animation
+                   setTimeout(function() {
+                       $(activeForm).removeClass('animated fadeIn');
+                   }, 1000);
+               });
+           });
+       })(jQuery);
+    </script>
+ </body>

@@ -1,0 +1,30 @@
+import { AuthService } from './../../auth/auth.service';
+import { Component, Injectable } from '@angular/core';
+import { Http, Headers } from '@angular/http';
+import { Observable } from 'rxjs/Observable';
+import 'rxjs/add/operator/catch';
+import 'rxjs/add/observable/throw';
+
+import * as AppConstants from '../../constants';
+@Injectable()
+export class UsersService {
+    private apiHeaders = new Headers({
+        'Content-Type': 'application/json'
+
+    });
+
+    constructor(private http: Http) {
+
+    }
+
+    getUsers() {
+        const usersUrl = AppConstants.apiUrl + 'user/users';
+        return this.http.get(usersUrl)
+            .map(res => res.json())
+            .catch(this.handleError);
+    }
+
+    handleError(error) {
+        return Observable.throw(error.json().message || 'Server error');
+    }
+}

@@ -1,0 +1,47 @@
+<body class="login">
+  <div class="form-signin">
+     <div class="text-center">
+        <img src="assets/img/hid.jpeg" alt="Metis Logo">
+     </div>
+     <hr>
+     <div class="tab-content">
+        <div id="signup" >
+           <form (ngSubmit)="register()" [formGroup]="form" >
+           <p class="text-muted text-center">
+              Enter your username and password
+           </p>
+           <div class="help-block error email" *ngIf="email.touched && !email.valid">
+              <p *ngIf="email.errors.required">Email is required</p>
+              <p *ngIf="email.errors.validateEmail">Email  is not valide</p>
+           </div>
+           <div class="checkbox"></div>
+           <input  id="register-username-textbox"  placeholder="email@email.com" [formControl]="email" type="text" class="form-control top">
+           <div class="help-block error password" *ngIf="password.touched && !password.valid">
+              <p *ngIf="password.errors.required">Password is required</p>
+              <p *ngIf="password.errors.minlength">Password has to be at least 8 characters</p>
+              <p *ngIf="password.errors.validatePassword">Password requires 1 number, 1 uppercase, and 1 lowercase character</p>
+           </div>
+           <div class="checkbox"></div>
+           <input id="register-password-textbox" type="password" class="form-control" placeholder="Password" [formControl]="password" type="password" class="form-control middle">
+           
+           <div *ngIf="errorMessage">
+              <span class="help-block error">{{errorMessage}}</span>
+           </div>
+           <div *ngIf="successMessage">
+              <span class="help-block success">{{successMessage}}</span>
+           </div>
+           <div class="checkbox"></div>
+           <button id="register-submit" type="submit" class=" go-btn btn btn-lg btn-success btn-block" [disabled]="!form.valid" >Register</button>
+           </form>
+        </div>
+     </div>
+     <hr>
+     <div class="text-center">
+        <ul class="list-inline">
+           <li><a [routerLink]="['../login']" class="text-muted" href="#login" data-toggle="tab">Login</a></li>
+           <li><a class="text-muted" href="#forgot" data-toggle="tab"></a></li>
+           <li><a class="text-muted" href="#signup" data-toggle="tab">Signup</a></li>
+        </ul>
+     </div>
+  </div>
+</body>

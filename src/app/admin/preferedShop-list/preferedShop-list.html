@@ -1,0 +1,27 @@
+<div *ngIf="preferedshops" class="row">
+    <div class="col-sm-2 col-md-2"></div>
+    <div class="col-sm-2 col-md-8">
+        <div *ngFor="let preferedshop of preferedshops" class="col-sm-4 col-md-3">
+            <div class="thumbnail">
+                <h4>{{preferedshop.name}}</h4>
+                <img src="http://placehold.it/150x150" alt="...">
+                <div class="caption">
+                    <p>
+
+                        <button type="button" class="btn btn-danger" (click)="removePrefredShop(preferedshop.name)">Remove</button>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-2 col-md-2"></div>
+</div>
+
+<div class="col-lg-2"></div>
+<div *ngIf="noPrefredShopsMessage" class="col-lg-8 text-center v-center alert alert-dismissable alert-info">
+    <h1>{{noPrefredShopsMessage}}</h1>
+</div>
+
+<div *ngIf="errorLocationMessage" class="col-lg-8 text-center v-center alert alert-dismissable alert-warning">
+    <h1>{{errorLocationMessage}}</h1>
+</div>

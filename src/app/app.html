@@ -1,0 +1,22 @@
+<div id="wrapper">
+    <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+       <div class="collapse navbar-collapse navbar-ex1-collapse">
+          <ul class="  nav-pills nav navbar-nav navbar-right navbar-user">
+             <li>
+                <a *ngIf="authService.isLoggedIn()" [routerLink]="['./admin/shoplist']" [routerLinkActive]="['active-link']">Shops</a>
+             </li>
+             <li>
+                <a *ngIf="authService.isLoggedIn()" [routerLink]="['./admin/prefredShoplist']" [routerLinkActive]="['active-link']">Prefered Shops</a>
+             </li>
+             <li>
+                <a (click)=logout() *ngIf="authService.isLoggedIn()">Logout</a>
+             </li>
+             <li></li>
+          </ul>
+       </div>
+    </nav>
+ </div>
+ <br><br><br><br>
+ <main>
+    <router-outlet></router-outlet>
+ </main>
